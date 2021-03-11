@@ -3,7 +3,7 @@
 #include <string.h>
 
 int* bSat(int **clauses, int n, int m);
-int satisfy(int *vars, int **clauses, int n, int m);
+int satisfy(int *vars, int **clauses, int n, int m, int v);
 
 int main()
 {
@@ -25,27 +25,34 @@ int main()
     }
     
     int *ans = bSat(clauses, n, m);
+
+    if (ans) {
+        for(int i = 0; i < m; i++) {
+            printf("%d ", ans[i]);
+        }
+    } else {
+        printf("No");
+    }
 }
 
 int* bSat(int **clauses, int n, int m)
 {
-    int *vars = (int *) malloc(sizeof(int));
-    memset(vars, -1, sizeof(vars));
+    int *vars = (int *) malloc(m * sizeof(int));
+    // memset(vars, -1, m * sizeof(int));
+    for(int i = 0; i < m; i++)
+        vars[i] = -1;
 
     int result = satisfy(vars, clauses, n, m, 0);
 
-
+    return result ? vars : NULL;
 }
 
 int satisfy(int *vars, int **clauses, int n, int m, int v)
 {
-    if (v == m) return 0;
+    if (v >= m) return 0;
 
-    int r = 0;
-    r |= satisfy(vars, clauses, n, m, v+1);
-    if (r) return 1;
-
-    r = 1;
+    int r = 1;
+    
     for(int i = 0; i < n; i++)
     {
         int k = sizeof(clauses[i]) / sizeof(int);
@@ -72,6 +79,11 @@ int satisfy(int *vars, int **clauses, int n, int m, int v)
     }
 
     if (r) return 1;
+
     vars[v] = 1;
     r |= satisfy(vars, clauses, n, m, v+1);
+    if (r) return 1;
+
+    return r;
+    
 }

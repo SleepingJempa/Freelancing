@@ -18,6 +18,10 @@ void pal_par(char *str)
 
     for(int i = 0; i < n; i++)
     {
+        printStringSplitted(str, i);
         for(int j = i; j < n; j++)
+            if (isPalindrome(str, i, j)) {
+                printString(str, i, j);
+            }
     }
 }

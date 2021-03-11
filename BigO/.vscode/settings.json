@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "fstream": "c",
+        "xstring": "cpp"
+    }
+}
