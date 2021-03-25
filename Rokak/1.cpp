@@ -1,16 +1,19 @@
 #include <iostream>
 #include <stack>
+#include <string>
 
 using namespace std;
 
 void printStackReversed(stack<int> s) {
-    if (s.empty()) return;
+    string ans;
 
-    int top = s.top();
-    s.pop();
+    while(! s.empty()) {
+        string n = to_string(s.top()) + " ";
+        s.pop();
+        ans = n + ans;
+    }
 
-    printStackReversed(s);
-    cout << top << " ";
+    cout << ans;
 }
 
 int main() {
