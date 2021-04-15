@@ -25,6 +25,15 @@ class Edge:
 
 
 class Network:
+    """
+    m: rows
+    n: columns
+    a: horizontal length
+    b: vertical length
+    path: the file name
+    lower: lower bound for random number (demand)
+    upper: upper bound for random number (demand)
+    """
     def __init__(self, m, n, a, b, path, lower: str, upper: str):
         self.m = m
         self.n = n
@@ -51,11 +60,11 @@ class Network:
             return 0
 
         t = tuple(sorted([s, e]))
-        if t in self.demand:
-            return self.demand[t]
-        else:
+
+        if t not in self.demand:
             self.demand[t] = randint(self.lower, self.upper)
-            return self.demand[t]
+
+        return self.demand[t]
 
     def get_index(self, i, j):
         return self.n * i + j
@@ -68,7 +77,7 @@ class Network:
     def build(self):
         for i in range(self.m):
             for j in range(self.n):
-                self.vertices[(i, j)] = Vertex(self.n * i + j)
+                self.vertices[(i, j)] = Vertex(self.n * i + j + 1)
 
         for i in range(self.m):
             for j in range(self.n):
