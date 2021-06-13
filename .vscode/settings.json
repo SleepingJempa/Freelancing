@@ -50,9 +50,13 @@
         "list": "cpp",
         "sstream": "cpp",
         "deque": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "random": "cpp"
     },
     "cSpell.words": [
         "BLINKYEMPTY"
-    ]
+    ],
+    "python.pythonPath": "C:\\Users\\Alireza Jafartash\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }

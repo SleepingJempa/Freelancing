@@ -1,0 +1,57 @@
+function push_back(Node e) {
+    if (! tail) {
+        if (! head) {
+            head = e;
+        }
+        tail = e;
+    } else {
+        tail.next = e;
+        tail = tail.next;
+    }
+}
+
+function push_front(Node e) {
+    if (! head) {
+        if (! tail) {
+            tail = e;
+        }
+        head = e;
+    } else {
+        head.next = e;
+        head = head.prev;
+    }
+}
+
+function deque_back() {
+    if (! tail) {
+        throw "Error"
+    } else {
+        Node temp = tail;
+
+        if (head == tail) {
+            delete tail;
+        } else {
+            tail = tail.prev;
+            delete tail.next;
+        }
+
+        return temp;
+    }
+}
+
+function deque_front() {
+    if (! tail) {
+        throw "Error"
+    } else {
+        Node temp = head;
+
+        if (tail == head) {
+            delete head;
+        } else {
+            head = head.next;
+            delete head.prev;
+        }
+
+        return temp;
+    }
+}

@@ -2,14 +2,14 @@
 #include <string.h>
 #include <stdlib.h>
 
-const int N = 101;
+const int MAXN = 101;
 
 int main() {
     char *str;
     char *sub;
 
-    str = (char *) malloc(N * sizeof(char));
-    sub = (char *) malloc(N * sizeof(char));
+    str = (char *) malloc(MAXN * sizeof(char));
+    sub = (char *) malloc(MAXN * sizeof(char));
 
     // Getline str
     // Getline sub
@@ -21,7 +21,7 @@ int main() {
 
     int must = 0;
     int size = 0;
-    char result[N];
+    char result[MAXN];
 
     for(int i = 0; i < n; i++) {
         int j = 0;

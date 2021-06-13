@@ -3,6 +3,7 @@ a = list(map(int, input().split()))
 mx = max(a)
 
 def solve(arr, partial, k, left, right):
+    # print(arr, left, right)
     if left == right:
         partial[left] = arr[left] if left == 0 else partial[left - 1] + arr[left]
         return int(arr[left] % k == 0) + int(partial[left] % k == 0)
@@ -11,8 +12,11 @@ def solve(arr, partial, k, left, right):
 
     ans = solve(arr, partial, k, left, m) + solve(arr, partial, k, m+1, right)
 
+    if (left == 0 and right == 3): print(partial)
+
     for l in range(left, m+1):
-        for r in range(m+1, left+1):
+        for r in range(m+1, right+1):
+            # print(l, r, int((partial[r] - partial[l]) % k == 0))
             ans += int((partial[r] - partial[l]) % k == 0)
 
     return ans

@@ -1,13 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-const int N = 100;
+const int MAXN = 100;
 
 int main() {
-    int arr[N];
-    int chk[N];
+    int arr[MAXN];
+    int chk[MAXN];
 
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < MAXN; i++) {
         scanf("%d", &arr[i]);
         chk[i] = 1;
     }
@@ -15,13 +15,13 @@ int main() {
     int bestNum = 0;
     int bestCnt = 0;
 
-    for(int i = 0; i < N; i++) {
+    for(int i = 0; i < MAXN; i++) {
         if (!chk[i]) {
             continue;
         }
         int num = arr[i];
         int cnt = 0;
-        for(int j = i; j < N; j++) {
+        for(int j = i; j < MAXN; j++) {
             if (arr[j] == num) {
                 cnt++;
                 chk[j] = 0;

@@ -1,0 +1,11 @@
+s = 0
+x = int(input())
+y = int(input())
+s += min(x, y)
+x = int(input())
+y = int(input())
+s += min(x, y)
+x = int(input())
+y = int(input())
+s += min(x, y)
+print(s)
